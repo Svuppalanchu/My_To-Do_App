@@ -1,6 +1,6 @@
-My To-Do List Application<br />
+**My To-Do List Application<br />**
 To run the application. <br />
-•	Clone the repo<br />
+• Clone the repo<br />
 •	Install the necessary packages ( Flask, Flask-SQLAlchemy etc)<br />
 •	Run the application (flask run)<br />
 This application allows the user to note their to-do action items. Not only that, this will help to record their upcoming meetings and check everyday meetings on the meetings home page.<br />
