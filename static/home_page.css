@@ -1,0 +1,111 @@
+select{
+    float:right;
+    width:auto;
+    margin-top: 1%;
+    margin-left:30%;
+    margin-right:25%;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+hr {
+    border-top: 3px solid black;
+    width: 50%;
+    margin: auto;
+}
+
+table{
+    margin-left: 25%;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.table tr {
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.task {
+    width: 50%;
+}
+
+.task-id, .update {
+    width: 10%;
+}
+
+.status {
+    width: 20%;
+}
+
+
+
+.form-popup {
+  display: none;
+  position: fixed;
+    top:1%;
+    right:1%;
+  border: 3px solid #ffffff;
+}
+
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-image: linear-gradient(#D29BE5FF, white);
+  background-repeat: no-repeat;
+}
+
+
+.form-container input{
+  width: 90%;
+  padding: 15px;
+  margin: 0 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input{
+    width: 90%;
+  padding: 15px;
+  margin: 0 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+select{
+    width: 100%;
+  padding: 15px;
+  margin: 0 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+.form-container input:focus,select:focus {
+  background-color: #ecd8f3;
+  outline: none;
+}
+
+.btn{
+    background-color: transparent;
+    color: black;
+    font-size: 24px;
+    margin-left: 10%;
+}
+
+.home_btn{
+    width: 10%;
+    display: inline-block;
+    margin-right: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    padding: 5px;
+}
+

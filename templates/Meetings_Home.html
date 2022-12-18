@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <script src="static/popup_form.js"></script>
+    <link rel="stylesheet" href="static/common_styles.css">
+    <link rel="stylesheet" href="static/home_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+<button class="home_btn" type="button"><a href="{{ url_for('home') }}">Home</a></button>
+<button class="home_btn" type="button"><a href="{{ url_for('logout') }}">Logout</a></button>
+<button class="home_btn" type="button" ><a href="{{ url_for('meeting_home_all') }}">All Meetings</a></button>
+<h1 align="center"> My Meetings List </h1>
+<div class="container">
+        <button type="button" onclick="openForm()">Add Meeting</button><br><br><hr><br>
+        <div class="form-popup" id="myForm">
+            <form action="/add_meeting" class="form-container" method="POST">
+                <h1 align="center">Add Your Task</h1>
+
+                <label for="Task desc"><b>Meeting</b></label>
+                <input type="text" name="meeting_desc" placeholder="Enter Meeting Description" required> <br>
+
+                <label for="date"><b>Date</b></label>
+                <input type="date" name="date"><br>
+
+                 <label for="time"><b>Time</b></label>
+                 <input type ="time" name="time"> <br>
+
+                <button type="submit" >Add</button>
+                <button type="button" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+</div>
+
+    <div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="task-id">#</th>
+            <th class="task">Meeting Name</th>
+            <th class="status">Time</th>
+            <th class="update">Edit</th>
+            <th class="update">Remove</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.meeting_desc}}</td>
+                <td>{{ item.time }}</td>
+                <td><button name="action" class="btn" value="{{ item.id }}" onclick="openFormEdit()"><i class="fa fa-pencil-square" aria-hidden="true"></i></button></td>
+                <div class="form-popup" id="formUpdate">
+                    <form action="/update_meeting" class="form-container" method="POST">
+                        <h1 align="center">Update Meeting</h1>
+                        <input type="hidden" name="meeting_id" value="{{item.id}}">
+
+                        <label for="Task desc"><b>Meeting</b></label>
+                        <input type="text" name="meeting_desc" placeholder="Enter Meeting Description" required> <br>
+
+                        <label for="date"><b>Date</b></label>
+                        <input type="date" name="date"><br>
+
+                        <label for="time"><b>Time</b></label>
+                        <input type ="time" name="time"> <br>
+
+                        <button type="submit">Add</button>
+                        <button type="button" onclick="closeFormEdit()">Close</button>
+                    </form>
+                </div>
+                <form action="/delete_meeting" method="POST">
+                    <td><button name="action" class="btn" value="{{item.id}}" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                </form>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="static/common_styles.css">
+</head>
+<body>
+
+    <h1 align="center">Welcome to My To-Do List App</h1>
+    <img src="static/to-do-list-apps.png" >
+    <button type="button" onClick="location.href='{{ url_for('task_home') }}'">Go to To-Do list Page</button>
+    <button type="button" onClick="location.href='{{ url_for('meeting_home') }}'">Go to Meetings Schedule Page</button>
+
+</body>
+</html>

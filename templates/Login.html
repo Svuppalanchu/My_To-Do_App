@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="static/login.css">
+</head>
+<body>
+<h1 align="center">Login to My To-Do List App</h1>
+<img src="static/to-do-list-apps.png" >
+
+{% for msg in get_flashed_messages() %}
+    <h4>{{ msg }}</h4>
+{% endfor %}
+
+<div>
+    <form action="/login" method="POST">
+        <input id="username" name="username" type="text" placeholder="Enter Your Username" required>
+        <input id="password" name="password" type="password" placeholder="Enter your password" required>
+        <button type="submit">Login</button>
+    </form>
+</div>
+<h3 align="center">Do not have an account?  <a href="{{ url_for('register') }}"> Sign Up here</a></h3>
+
+</body>
+</html>

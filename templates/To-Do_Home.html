@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+    <script src="static/popup_form.js"></script>
+    <link rel="stylesheet" href="static/common_styles.css">
+    <link rel="stylesheet" href="static/home_page.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <button class="home_btn" type="button"><a href="{{ url_for('home') }}">Home</a></button>
+    <button class="home_btn" type="button"><a href="{{ url_for('logout') }}">Logout</a></button>
+    <h1 align="center"> My To-Do List App</h1>
+    <button type="button" onclick="openForm()">Add Task</button> <br><br><hr><br>
+    <div class="form-popup" id="myForm">
+        <form action="/add_task" class="form-container" name="action" value="action-submit" method="POST">
+            <h1 align="center">Add Your Task</h1>
+
+            <label for="Task desc"><b>Task</b></label>
+            <input type="textarea" id="task" name="task" placeholder="Enter Task Description" required>
+
+            <label for="Task desc"><b>Status</b></label>
+            <select align="center" name="status_select">
+                <option  value="todo">Todo</option>
+                <option  value="in_progress">In Progress</option>
+                <option value="done">Done</option>
+            </select>
+            <button type="submit" >Add</button>
+            <button type="button" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+
+    <div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th class="task-id">#</th>
+            <th class="task">Task Name</th>
+            <th class="status">Status</th>
+            <th class="update">Edit</th>
+            <th class="update">Remove</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for item in items %}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.task}}</td>
+
+                {% if item.status == 0 %}
+                    <td style="color:red"><i class="fa fa-square" aria-hidden="true"></i></td>
+                {%endif%}
+                {% if item.status == 1 %}
+                    <td style="color:yellow"><i class="fa fa-hourglass-half" aria-hidden="true"></i></td>
+                {%endif%}
+                {% if item.status == 2 %}
+                    <td style="color:green"><i class="fa fa-check-square" aria-hidden="true"></i></td>
+                {%endif%}
+                    <td><button name="action" class="btn" type="button" value="{{ item.id }}" onclick="openFormEdit()"><i class="fa fa-pencil-square" aria-hidden="true"></i></button></td>
+
+                <div class="form-popup" id="formUpdate">
+                    <form action="/edit_status" method="POST" class="form-container">
+                        <h1 align="center">Update Status</h1>
+                        <input type="hidden" name="task_id" value="{{item.id}}">
+                        <label for="Task desc"><b>Status</b></label>
+                        <select class="dropdown" align="center" name="status_select">
+                            <option  value="todo">Todo</option>
+                            <option  value="in_progress">In Progress</option>
+                            <option value="done">Done</option>
+                        </select>
+                        <button type="submit" >Update</button>
+                        <button type="button" onclick="closeFormEdit()">Close</button>
+                    </form>
+                </div>
+                 <form action="/delete_task" method="POST">
+                     <td><button name="action" class="btn" value="{{item.id}}" type="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                 </form>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>

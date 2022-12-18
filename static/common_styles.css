@@ -1,0 +1,27 @@
+body{
+ background-image: linear-gradient(#D29BE5FF, white);
+  background-repeat: no-repeat;
+}
+button {
+  width:25%;
+  padding: 14px 14px;
+  margin-top: 1%;
+  margin-left:38%;
+  margin-right:30%;
+  background-color: #a62ece;
+  display: inline-block;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+img {
+  width: 20%;
+  padding: 14px 20px;
+  margin-top: 0.5%;
+  margin-left:38%;
+  margin-right:30%;
+}
